@@ -6,8 +6,8 @@
   connection: local
 
   vars_files:
-    - vars/aws/kafka.yaml
-    - vars/deploy/kafka.yaml
+    - vars/aws/kafka_manager.yaml
+    - vars/deploy/kafka_manager.yaml
 
   roles:
     - name: community/deploy_config
