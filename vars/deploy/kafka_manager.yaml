@@ -1,7 +1,7 @@
 java:
   version: 8
 
-#zookeeper_inventory_group: "{{ lookup('env','AWS_ZOOKEEPER_INVENTORY_GROUP') if lookup('env','AWS_ZOOKEEPER_INVENTORY_GROUP') != '' else 'zookeeper_cluster' }}"
+zookeeper_inventory_group: "{{ lookup('env','AWS_ZOOKEEPER_INVENTORY_GROUP') if lookup('env','AWS_ZOOKEEPER_INVENTORY_GROUP') != '' else 'zookeeper_cluster' }}"
 
 jmx_port: "9999"
 jmx_ip: "{{ ec2_private_ip_address }}"
@@ -10,9 +10,9 @@ kafka_manager:
   installation_type: s3
   sources_tag: 1.3.0.8
   zip_path: bin/kafka-manager-1.3.0.8.zip
-#  env_vars:
-#    ZK_HOSTS: "{{ groups['tag_inventory_group_'+zookeeper_inventory_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':2181,')+':2181' }}"
-#    JMX_PORT: "{{ jmx_port }}"
+  env_vars:
+    ZK_HOSTS: "{{ groups['tag_inventory_group_'+zookeeper_inventory_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':2181,')+':2181' }}"
+    JMX_PORT: "{{ jmx_port }}"
 
 
 aws:
