@@ -10,7 +10,6 @@
   vars_files:
     - vars/ssh_users/ssh_users.yaml
     - vars/aws/kafka_manager.yaml
-    - vars/deploy/deploy.yaml
     - vars/aws/aws.yaml
     - vars/deploy/kafka_manager.yaml
 
